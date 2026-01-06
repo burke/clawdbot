@@ -39,6 +39,7 @@
           buildPhase = ''
             runHook preBuild
             pnpm build
+            pnpm ui:build
             runHook postBuild
           '';
 
@@ -47,7 +48,6 @@
             mkdir -p $out/lib/clawdbot $out/bin
             cp -r dist $out/lib/clawdbot/
             cp -r node_modules $out/lib/clawdbot/
-            cp -r ui $out/lib/clawdbot/
             cp package.json $out/lib/clawdbot/
 
             makeWrapper ${pkgs.nodejs_22}/bin/node $out/bin/clawdbot \
